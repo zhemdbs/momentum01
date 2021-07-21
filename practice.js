@@ -127,6 +127,30 @@ calculator.powerOf(2, 3);
 console.clear();
 //------------------------------------------------
 const age = 96;
-function calculateKrAge(ageofForeigner){
-  
-}
+function calculateKrAge(ageOfForeigner){
+  return ageOfForeigner + 2; 
+};
+//function 안에 무언가를 return하면 
+//누군가 function 을 실행 할 때, 
+//calculaterKrAge(age)를 ageOfForeigner + 2의 결과로 대체할 것
+const krAge = calculateKrAge(age);
+
+console.log(krAge);
+
+//즉
+const age = 96;
+function calculateKrAge(ageOfForeigner){
+  return ageOfForeigner + 2; 
+};
+
+const krAge = calculateKrAge(age);
+
+console.log(krAge);
+//1. calculateKrAge(age)를 실행시키면, 
+//2. const age = 96에서 96이라는 argument가 age로 대체
+//3. calculaterKrAge(96)
+//4. 그리고 그 96이 calculateKrAge(ageOfForeigner)의 ageOfForeigner자리로 감
+//5. calculateKrAge(96)
+//6. 96 + 2;은 98이 됨
+//7. return함으로써, function을 호출하는 코드는 98이 됨 const krAge = 98;
+//8. console.log(krAge);//98
