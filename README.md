@@ -23,7 +23,8 @@ const loginInput = document.querySelector("#login-form input");
 const greeting = document.querySelector("#greeting");
 
 const HIDDEN_CLASSNAME = "hidden"; 
-//본인이 생성한 string을 반복해서 사용하게 될 경우, 반복되는 string들을 대문자 변수로 저장해 놓는 것이 좋음(실수X, string기억 상기)
+//본인이 생성한 string을 반복해서 사용하게 될 경우, 
+//반복되는 string들을 대문자 변수로 저장해 놓는 것이 좋음(실수X, string기억 상기)
 
 function onLoginSubmit(event) {
   event.preventDefault();
