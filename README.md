@@ -2,6 +2,7 @@
 
 
 # # Login
+
 - **preventDefault**
 ```js
 const loginForm = document.querySelector("#login-form");
@@ -78,6 +79,7 @@ if(savedUsername == null) {
 <br/>
 
 ____________
+
 # # Clock
 - **setInterval**
 <br>1. 기본 동작이 반복적으로 일어남
@@ -105,8 +107,8 @@ function sayHello() {
 
 setTimeout(sayHello, 5000);
 // setTimeout(function, time)
-
 ```
+
 |-----|설명|종료 방법|
 |:---------:|:--------:|:--------:|
 |setInterval|기본 동작이 반복적으로 일어남|clearInterval();|
@@ -129,13 +131,13 @@ setInterval(getClock, 1000);
 
 - **Date**
 <br>날짜나 시간을 얻는 함수
-```
+```js
 Date.getDate();
 Date.getDay();
 Date.getFullYear();
 Date.getHours();
 Date.getTime();
-⋯⋯
+//⋯⋯
 ```
 
 - **padStart**
@@ -155,6 +157,7 @@ Date.getTime();
 'abc'.padStart(6,"123465"); // "123abc"
 'abc'.padStart(8, "0");     // "00000abc"
 ```
+
 - **padEnd**
 <br>- 뒤쪽에 문자를 추가
 ```
@@ -164,11 +167,13 @@ Date.getTime();
 ```
 
 - *clock code 내용*
+
 1. getClock이란 함수를 만들어, 그 안에 date 객체를 생성하여
 2. date를 호출하는 당시의 현재 날짜, 시간을 알려주게 함
 3. getHours, getMinutes, getSeconds를 통해 시,분,초를 얻어오되,
 4. number타입으로 얻어온 걸 string으로 바꾸고
 5. 1~9까지는 예를들어 10:15:1로 호출되니 padStart를 통해 두자리수일때 앞에 0이 오게 함
+
 ```js
 const clock = document.querySelector("h2#clock");
 
@@ -188,6 +193,7 @@ setInterval(getClock, 1000);
 <br/>
 
 ____________
+
 # # Quotes and Background
 - **Math.module**
 ```
@@ -203,22 +209,24 @@ Math.ceil(1.01) -> 2
 Math.floor(1.9) -> 1
 Math.floor(1.999999) -> 1
 ```
+
 ```js
 const todaysQuote = quotes[Math.floor(Math.random() * quotes.length)]; 
 //Math.floor(Math.random() * quotes.length)은 전부 number로 되며,
 //객체가 랜덤으로 나옴
 ```
+
+
 - ***HTML 요소 추가***
 - **Document.createElement()**
 <br>JS에서 tagName의 HTML요소를 만들어 반환
 ```
-.createElement('h1')은
-HTML에 
-<h1></h1>을 생성
+.createElement('h1')은 HTML에 <h1></h1>을 생성
 ```
 
 - **.appendChild()**
 <br>선택한 요소 안에 자식요소를 추가
+
 ```js
 const chosenImage = images[Math.floor(Math.random() * images.length)];
 //img를 랜덤으로 보여줌
@@ -235,14 +243,24 @@ document.body.appendChild(bgImage); //bgImage를 body 내부에 추가
 <br/>
 
 ____________
+
 # # To do list
+
+- *list 만들기*
 ```js
 const toDoForm = document.querySelector("#todo-form");
 const toDoInput = document.querySelector("#todo-form input");
 const toDoList = document.querySelector("#todo-list");
 
 function paintToDo(newTodo) {
-  
+  const li = document.createElement("li"); //li를 만들고
+  const span = document.createElement("span"); //span을 만들고
+  span.innerText = newTodo; //span의 text 변경
+  const button = document.createElement("button"); //button을 만들고
+  button.innerText = "❌" //button의 text 변경
+  li.appendChild(span); //li에 span을 추가
+  li.appendChild(button); //li에 button을 추가
+  toDoList.appendChild(li); //toDoList에 li를 추가
 }
 
 function handleToDoSubmit(event) {
@@ -258,6 +276,93 @@ function handleToDoSubmit(event) {
 
 toDoForm.addEventListener("submit", handleToDoSubmit);
 ```
+
+- **parentElement**
+
+```js
+//list 삭제버튼
+function deleteToDo(event) {
+  const li = event.target.parentElement; 
+  //button을 클릭할 때, event를 얻고 target을 줌. 
+  //target은 button! target의 부모가 li
+  li.remove(); //그 li를 삭제
+}
+```
+
+- *코드 내용*
+1. 사용자가 form을 submit하면
+2. toDoInput.value을 비우고
+3. 그 newTodo를 toDos 배열에 push하고,
+4. newTodo를 화면에 그려준 뒤에 toDos배열을 localStorage에 넣어주면서 저장
+
+```js
+//list 저장
+const toDos = [];
+function saveToDos() {
+  localStorage.setItem("todos", toDos);
+}
+
+//input
+function handleToDoSubmit(event) {
+  event.preventDefault();
+  const newTodo = toDoInput.value;
+  toDoInput.value = "";
+  toDos.push(newTodo);
+  paintToDo(newTodo);
+}
+
+toDoForm.addEventListener("submit", handleToDoSubmit);
+```
+
+- **JSON.stringify()**
+<br/>js값이나 객체를 JSON문자열로 변환
+
+```js
+//예를 들어
+const player = {name:"yoon"}
+//string으로 바꾸고 싶다면
+
+JSON.stringify(player); //"{\"name\":\"yoon\"}"
+```
+
+- **JSON.parse**
+<br/>JSON 문자열의 구문을 분석하고, 그 결과에서 js값이나 객체를 생성
+<br/>즉, stringify가 단순한 string으로 바꾼것을 js가 이해할 수 있는 array로 만듬
+
+```
+JSON.stringify([1, 2, 3, 4]) //"[1,2,3,4]"
+JSON.parse("[1,2,3,4]") //(4) [1, 2, 3, 4]
+
+"[a,b,c,d]" (string) => [a, b, c, d] (array);
+```
+
+- **Date.now()**
+<br/>UTC 기준으로 1970년 1월 1일 0시 0분 0초부터 현재까지 경과된 밀리 초를 반환
+
+
+- **filter**
+<br/>주어진 함수의 테스트를 통과하는 모든 요소를 모아 새로운 배열로 반환
+<br/>선택옵션
+
+```js
+const arr = [1234, 5454, 233, 122, 45, 6775, 334]
+
+function appleFunction(potato) {return potato <= 1000}
+
+arr.filter(appleFunction);
+//(4) [233, 122, 45, 334]
+```
+```js
+const arr = [1, 2, 3, 4]
+
+arr.filter(item => item > 2) //(2) [3, 4]
+
+const newArr = arr.filter(item => item > 2)
+
+arr //(4) [1, 2, 3, 4]
+newArr //(2) [3, 4]
+```
+
 
 <br/>
 
