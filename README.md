@@ -363,8 +363,28 @@ arr //(4) [1, 2, 3, 4]
 newArr //(2) [3, 4]
 ```
 
-
 <br/>
 
 ____________
+
 # # Weather
+
+- ***Web API***
+
+  - **navigator**
+  <br>브라우저에 대한 버전, 정보, 종류 등 관련된 정보를 제공
+
+  - **geolocation.getCurrentPosition**
+  <br>현재 위치를 가져옴
+
+  ```js
+  navigator.geolocation.getCurrentPosition() //위치 좌표를 알려줌
+  //getCurrentPosition(success function, error function)
+  ```
+
+  - **fetch**
+  ```js
+  fetch(url, options)
+  .then((response) => console.log("response:", response))
+  .catch((error) => console.log("error:", error));
+  ```
