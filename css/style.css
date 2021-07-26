@@ -1,3 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+
+/*Js에서 className부여로 요소를 숨기기 위해*/
 .hidden {
   display: none;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+main {
+  position: absolute;
+  top: 80px;
+  width: 80%;
+}
+
+img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
