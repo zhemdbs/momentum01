@@ -9,14 +9,16 @@
 </head>
 <body>
   <main>
-    <h2 id="clock">00:00:00</h2>
-    <form class="hidden" id="login-form">
-      <input required maxlength="15" type="text" placeholder="What is your name?"/>
-      <button>Log In</button>
+    <div class="js-clock">
+      <h1 id="clock">00:00:00</h1>
+    </div>
+    <form class="hidden form" id="login-form">
+      <input class="input-name" required maxlength="15" type="text" placeholder="What is your name?"/>
+      <!-- <button>Log In</button> -->
     </form>
     <h1 id="greeting" class="hidden"></h1>
     <form id="todo-form">
-      <input type="text" placeholder="Write a To Do and Press Enter" required/>
+      <input class="input-todolist" type="text" placeholder="Write a To Do List" required/>
     </form>
     <ul id="todo-list"></ul>
     <div id="quote">
