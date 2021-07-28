@@ -1,30 +1,104 @@
-* {
+@charset "uft-8";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap");
+
+/* reset */
+html, body, div, span,
+h1, h2, h3, p, ol, ul, li,
+form, label, header, section, time {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  font-family: "Noto Sans KR", sans-serif;
+  vertical-align: baseline;
   box-sizing: border-box;
+  color: #ffffff;
 }
+
+ul,ol {list-style: none;}
+a {color: inherit; text-decoration: none;}
+img {vertical-align: top; border: none;}
+button {border: none; padding: 0; cursor: pointer; background-color: transparent; color: inherit; font-family: inherit; font-size: inherit;}
+
+:root {
+  --main-color : #FFFFFF;
+  --secondary-color : #1C1B1B; 
+}
+
+/* common */
 
 /*Js에서 className부여로 요소를 숨기기 위해*/
-.hidden {
-  display: none;
-}
+.hidden {display: none;}
 
 body {
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  height: 100%;
-}
-
-main {
-  position: absolute;
-  top: 80px;
-  width: 80%;
+  height: 100vh;
+  overflow: hidden;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 17px;
 }
 
 img {
   position: absolute;
-  width: 100%;
-  height: 100%;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
   z-index: -1;
+  animation: fadeIn 0.5s linear;
 }
+
+main {
+  position: relative;
+  top: 100px;
+  text-align: center;
+}
+
+/*js-clock*/
+div.js-clock {
+  margin-bottom: 50px;
+}
+
+.js-clock #clock {
+  font-size: 100px;
+  -webkit-text-stroke: var(--secondary-color) 0.01px
+}
+
+/*js-greetings*/
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(--main-color);
+  opacity: 1; /* Firefox */
+}
+
+.input-name,
+.input-todolist {
+  font-size: 20px;
+  border: 0;
+  outline: 0;
+  text-align: center;
+  background-color: transparent;
+  border-bottom: 3px solid var(--main-color);
+  color: var(--main-color);
+}
+
+input[type="text" i] {
+  padding: 1px 2px;
+}
+
+.greeting {
+  font-size: 80px;
+}
+
+/*js-weather*/
+#weather {
+  position: absolute;
+  display: inline-block;
+  top: 0;
+  right: 0;
+  color: var(--secondary-color);
+}
+
+#weather span {
+  display: block;
+}
+
+#weather span:last-child {text-align: center;} 
