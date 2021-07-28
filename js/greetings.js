@@ -15,6 +15,17 @@ function onLoginSubmit(event) {
   paintGreetings(username);
 }
 
+function editName(event) {
+  event.preventDefault();
+
+  // Remove the current user from local storage
+  localStorage.removeItem(USER_LS);
+
+  // Reload the loadname function
+  loadName();
+}
+
+
 function paintGreetings(username) {
   greeting.innerText = `Hello! ${username}`;
   greeting.classList.remove(HIDDEN_CLASSNAME);
