@@ -6,9 +6,21 @@ const images = [
   "5.jpg",
 ];
 
-const chosenImage = images[Math.floor(Math.random() * images.length)];
-const bgImage = document.createElement("img");
+function bgImage(imgNumber) {
+  const image = new Image();
+  image.src = `img/${imgNumber + 1}.jpg`;
+  image.classList.add("bgimg");
+  document.body.appendChild(image);
+}
 
-bgImage.src = `img/${chosenImage}`;
-document.body.appendChild(bgImage);
+function chosenImage() {
+  const number = Math.floor(Math.random() * images.length);
+  return number;
+};
 
+function init() {
+  const randomNumber = chosenImage();
+  bgImage(randomNumber);
+};
+
+init();
