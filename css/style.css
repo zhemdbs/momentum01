@@ -40,7 +40,7 @@ main {position: relative; top: 50px; text-align: center;}
 
 
 /*js-clock*/
-.js-clock {margin-bottom: 50px; text-align: center;}
+.js-clock {margin: 50px 0; text-align: center;}
 .js-clock #clock {font-size: 100px;}
 
 /*js-greetings*/
@@ -65,4 +65,4 @@ input[type="text" i] {padding: 1px 2px;}
 #todo-list {margin: 30px 0;}
 
 /*js-quote*/
-#quote {position: relative; bottom: 0; text-align: center;}
+#quote {position: absolute; bottom: 0; left: 0; text-align: center;}
