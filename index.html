@@ -5,28 +5,32 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
+  <script src="https://kit.fontawesome.com/3fff54f4f2.js" crossorigin="anonymous"></script>
   <title>Momentum App</title>
 </head>
 <body>
+  <div id="weather">
+    <span class="city"></span>
+    <span class="weather"></span>
+  </div>
+  <div class="js-clock">
+    <h1 id="clock">00:00:00</h1>
+  </div>
   <main>
-    <div class="js-clock">
-      <h1 id="clock">00:00:00</h1>
-    </div>
     <form class="hidden form" id="login-form">
       <input class="input-name" required maxlength="15" type="text" placeholder="What is your name?"/>
       <!-- <button>Log In</button> -->
     </form>
-    <h1 id="greeting" class="hidden"></h1>
+    <div class="greeting-container">
+      <h1 id="greeting" class="hidden"></h1>
+      <i class="far fa-edit"></i>
+    </div>
     <form id="todo-form">
       <input class="input-todolist" type="text" placeholder="Write a To Do List" required/>
     </form>
     <ul id="todo-list"></ul>
-    <div id="quote">
-      <span></span>
-      <span></span>
-    </div>
   </main>
-  <div id="weather">
+  <div id="quote">
     <span></span>
     <span></span>
   </div>
