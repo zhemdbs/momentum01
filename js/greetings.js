@@ -1,6 +1,7 @@
 const loginForm = document.querySelector("#login-form");
 const loginInput = document.querySelector("#login-form input");
 const greeting = document.querySelector("#greeting");
+const editBtn = document.querySelector(".fa-edit")
 
 const HIDDEN_CLASSNAME = "hidden";
 const USERNAME_KEY = "username";
@@ -15,29 +16,49 @@ function onLoginSubmit(event) {
   paintGreetings(username);
 }
 
+function toDisplay(element, boolean) {
+  if (boolean) {
+    element.style.display = "block";
+  } else {
+    element.style.display = "none";
+  }
+}
+
 function editName(event) {
   event.preventDefault();
 
   // Remove the current user from local storage
-  localStorage.removeItem(USER_LS);
+  localStorage.removeItem(USERNAME_KEY);
 
   // Reload the loadname function
   loadName();
 }
 
-
 function paintGreetings(username) {
   greeting.innerText = `Hello! ${username}`;
   greeting.classList.remove(HIDDEN_CLASSNAME);
+  toDisplay(editBtn, true)
+
+  editBtn.addEventListener('click', editName);
 }
 
-const savedUsername = localStorage.getItem(USERNAME_KEY);
+function loadName() {
+  const savedUsername = localStorage.getItem(USERNAME_KEY);
 
-if(savedUsername == null) {
-  //show the form
-  loginForm.classList.remove(HIDDEN_CLASSNAME);
-  loginForm.addEventListener("submit", onLoginSubmit);
-} else {
-  //show the greetings
-  paintGreetings(savedUsername);
+  if(savedUsername == null) {
+    //show the form
+    toDisplay(editBtn, false)
+    greeting.innerText = '';
+    loginForm.classList.remove(HIDDEN_CLASSNAME);
+    loginForm.addEventListener("submit", onLoginSubmit);
+  } else {
+    //show the greetings
+    paintGreetings(savedUsername);
+  }
 }
+
+function init() {
+  loadName();
+}
+
+init();
