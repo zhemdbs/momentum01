@@ -29,38 +29,19 @@ button {border: none; padding: 0; cursor: pointer; background-color: transparent
 /*Js에서 className부여로 요소를 숨기기 위해*/
 .hidden {display: none;}
 
-body {
-  height: 100vh;
-  overflow: hidden;
-  font-family: "Noto Sans KR", sans-serif;
-  font-size: 17px;
-}
+body {height: 100vh; overflow: hidden; font-size: 17px;}
 
-img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  animation: fadeIn 0.5s linear;
-}
+main {position: relative; top: 50px; text-align: center;}
 
-main {
-  position: relative;
-  top: 100px;
-  text-align: center;
-}
+/*js-weather*/
+#weather {font-weight: 500; display: flex; justify-content: flex-end; font-size: 17px; padding: 20px;}
+#weather .city {margin-right: 10px;}
+#weather .weather {text-align: center;} 
+
 
 /*js-clock*/
-div.js-clock {
-  margin-bottom: 50px;
-}
-
-.js-clock #clock {
-  font-size: 100px;
-  -webkit-text-stroke: var(--secondary-color) 0.01px
-}
+.js-clock {margin-bottom: 50px; text-align: center;}
+.js-clock #clock {font-size: 100px;}
 
 /*js-greetings*/
 ::placeholder {
@@ -68,37 +49,20 @@ div.js-clock {
   color: var(--main-color);
   opacity: 1; /* Firefox */
 }
+input[type="text" i] {padding: 1px 2px;}
 
-.input-name,
-.input-todolist {
-  font-size: 20px;
-  border: 0;
-  outline: 0;
-  text-align: center;
-  background-color: transparent;
-  border-bottom: 3px solid var(--main-color);
-  color: var(--main-color);
-}
+.input-name, .input-todolist {font-size: 20px; border: 0; outline: 0; text-align: center; background-color: transparent; border-bottom: 3px solid var(--main-color); color: var(--main-color);}
 
-input[type="text" i] {
-  padding: 1px 2px;
-}
+.greeting-container {display: inline-block; position: relative;}
+.greeting-container #greeting {font-size: 70px;}
+.greeting-container .fa-edit {position: absolute; top: 0; right: 0; font-size: 12px; cursor: pointer; display: block;}
+.greeting-container .fa-edit::before {content: "\f044";}
 
-.greeting {
-  font-size: 80px;
-}
+/*js-bg*/
+.bgimg {position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; animation: fadeIn 0.5s linear;}
 
-/*js-weather*/
-#weather {
-  position: absolute;
-  display: inline-block;
-  top: 0;
-  right: 0;
-  color: var(--secondary-color);
-}
+/*js-todolist*/
+#todo-list {margin: 30px 0;}
 
-#weather span {
-  display: block;
-}
-
-#weather span:last-child {text-align: center;} 
+/*js-quote*/
+#quote {position: relative; bottom: 0; text-align: center;}
