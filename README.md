@@ -9,7 +9,7 @@ __________
 
 ## *사용스택*
 _____
-HTML, CSS, Vanilla JS를 사용해 제작되었습니다.
+HTML, CSS, Vanilla JS를 사용해 구현했습니다.
 <br/>
 <br/>
 
