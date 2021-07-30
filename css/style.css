@@ -39,11 +39,11 @@ main {position: relative; top: 50px; text-align: center;}
 #weather .weather {text-align: center;} 
 
 
-/*js-clock*/
-.js-clock {margin: 50px 0; text-align: center;}
-.js-clock #clock {font-size: 100px;}
+/*clock*/
+.js-clock {margin-bottom: 30px; text-align: center;}
+.js-clock #clock {font-size: 80px;}
 
-/*js-greetings*/
+/*greetings*/
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: var(--main-color);
@@ -51,18 +51,22 @@ main {position: relative; top: 50px; text-align: center;}
 }
 input[type="text" i] {padding: 1px 2px;}
 
-.input-name, .input-todolist {font-size: 20px; border: 0; outline: 0; text-align: center; background-color: transparent; border-bottom: 3px solid var(--main-color); color: var(--main-color);}
+.input-name,
+.input-todolist {font-size: 20px; border: 0; outline: 0; text-align: center; background-color: transparent; border-bottom: 3px solid var(--main-color); color: var(--main-color);}
 
-.greeting-container {display: inline-block; position: relative;}
-.greeting-container #greeting {font-size: 70px;}
+.greeting-container {display: inline-block; position: relative; top: -50px;}
+.greeting-container #greeting {font-size: 65px; background: linear-gradient(to top right, #5b83c0, #fc978d); color: transparent; -webkit-background-clip: text;}
 .greeting-container .fa-edit {position: absolute; top: 0; right: 0; font-size: 12px; cursor: pointer; display: block;}
 .greeting-container .fa-edit::before {content: "\f044";}
 
-/*js-bg*/
+/*bg*/
 .bgimg {position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; animation: fadeIn 0.5s linear;}
 
-/*js-todolist*/
+/*todolist*/
 #todo-list {margin: 30px 0;}
+#todo-list li + li {margin-top: 5px;}
+#todo-list li span {font-size: 20px; margin-right: 5px;}
 
-/*js-quote*/
-#quote {position: absolute; bottom: 0; left: 0; text-align: center;}
+/*quote*/
+#quote {font-weight: 500; font-size: 17px; position: absolute; bottom: 5px; text-align: center;}
+#quote span {display: inline-block; margin: 0 5px;}
