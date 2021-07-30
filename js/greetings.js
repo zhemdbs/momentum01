@@ -16,6 +16,7 @@ function onLoginSubmit(event) {
   paintGreetings(username);
 }
 
+//greeting show or none
 function toDisplay(element, boolean) {
   if (boolean) {
     element.style.display = "block";
