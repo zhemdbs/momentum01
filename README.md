@@ -1,42 +1,21 @@
-# momentum01
+# [momentum01](https://zhemdbs.github.io/momentum01/)
 
+## *미리보기*
+__________
+![Screenshot](https://user-images.githubusercontent.com/85764721/127614357-87a91ed2-63a6-4f9c-99bb-9539b1ce2d85.png)
+#### 현재 사용하는 시간이 나타납니다
+#### 이름, todo리스트를 작성할 수 있습니다
+<br/>
 
+## *사용스택*
+_____
+HTML, CSS, Vanilla JS를 사용해 제작되었습니다.
+<br/>
+<br/>
+
+## *구현방법*
+_____
 # # Login
-
-- **preventDefault**
-```js
-const loginForm = document.querySelector("#login-form");
-const loginInput = document.querySelector("#login-form input");
-
-function onLoginSubmit(event) {
-  event.preventDefault(); //어떤 event의 기본 행동이 발생되지 않도록 막아줌
-  console.log(event);
-}
-
-loginForm.addEventListener("submit", onLoginSubmit);
-//addEventListner안에 있는 함수는 직접 실행하지 않음(브라우저가 함)
-```
-
-- **classList.add, classList.remove**
-```js
-const loginForm = document.querySelector("#login-form");
-const loginInput = document.querySelector("#login-form input");
-const greeting = document.querySelector("#greeting");
-
-const HIDDEN_CLASSNAME = "hidden"; 
-//본인이 생성한 string을 반복해서 사용하게 될 경우, 
-//반복되는 string들을 대문자 변수로 저장해 놓는 것이 좋음(실수X, string기억 상기)
-
-function onLoginSubmit(event) {
-  event.preventDefault();
-  loginForm.classList.add(HIDDEN_CLASSNAME); //classname 추가
-  const username = loginInput.value;
-  greeting.innerText = `hello ${username}`;
-  greeting.classList.remove(HIDDEN_CLASSNAME); //classname 삭제
-}
-
-loginForm.addEventListener("submit", onLoginSubmit);
-```
 
 - **localStorage**
 <br>브라우저 상의 DB
@@ -46,11 +25,10 @@ localStorage.getItem(key) //저장한 값 불러오기
 localStorage.removeItem(key) //저장된 값 지우기
 ```
 
-- *Login code 내용*
-1. savedUsername에 유저정보가 있다면, paintGreetings에서 유저정보를 받아 argument로 넣어줌
+1. savedUsername에 유저정보가 있다면, paintGreetings에서 유저정보를 받아 argument로 넣어준다
 2. savedUsername에 유저정보가 없다면, loginForm의 submit(onLoginSubmit)을 기다리고
 3. onLoginSubmit되면 loginInput.value(input)으로부터 username(유저정보)를 받고, 
-4. paintGreetings(username)을 호출
+4. paintGreetings(username)을 호출 한다
 ```js
 function onLoginSubmit(event) {
   event.preventDefault();
@@ -81,33 +59,7 @@ if(savedUsername == null) {
 ____________
 
 # # Clock
-- **setInterval**
-<br>1. 기본 동작이 반복적으로 일어남
-<br>2. '매번' 일어나야 하는 무언가
-```js
-const clock = document.querySelector("h2#clock");
-
-function sayHello() {
-  console.log("hello");
-}
-
-setInterval(sayHello, 5000);
-// setInterval(function, time) 
-//처음에는 아무것도 없다가 5초 뒤에 console에 hello가 뜸
-```
-
-- **setTimeout**
-<br>기본 동작이 한번 일어남
-```js
-const clock = document.querySelector("h2#clock");
-
-function sayHello() {
-  console.log("hello");
-}
-
-setTimeout(sayHello, 5000);
-// setTimeout(function, time)
-```
+- **setInterval, setTimeout**
 
 |-----|설명|종료 방법|
 |:---------:|:--------:|:--------:|
@@ -115,19 +67,6 @@ setTimeout(sayHello, 5000);
 |setTimeout|기본 동작이 한번 일어남|clearTimeout();|
 
 <br/>
-
-```js
-const clock = document.querySelector("h2#clock");
-
-function getClock() {
-  const date = new Date();
-  clock.innerText = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
-}
-
-getClock();
-setInterval(getClock, 1000);
-```
-
 
 - **Date**
 <br>날짜나 시간을 얻는 함수
@@ -141,7 +80,7 @@ Date.getTime();
 ```
 
 - **padStart**
-<br>- 현재 문자열의 시작을 다른 문자열로 채워, 주어진 길이를 만족하는 새로운 문자열을 반환
+<br>- 현재 문자열의 시작을 다른 문자열로 채워, 주어진 길이를 만족하는 새로운 문자열을 반환한다
 <br>- 채워넣기는 대상 문자열의 좌측부터 적용
 ```js
 //예를 들어, 1이라는 숫자를 01로 하고 싶을때
@@ -160,19 +99,19 @@ Date.getTime();
 
 - **padEnd**
 <br>- 뒤쪽에 문자를 추가
-```
+```js
 //예시
 'abc'.padEnd(10, "foo");   // "abcfoofoof"
 'abc'.padEnd(6, "123456"); // "abc123"
 ```
 
-- *clock code 내용*
+<br/>
 
-1. getClock이란 함수를 만들어, 그 안에 date 객체를 생성하여
-2. date를 호출하는 당시의 현재 날짜, 시간을 알려주게 함
-3. getHours, getMinutes, getSeconds를 통해 시,분,초를 얻어오되,
-4. number타입으로 얻어온 걸 string으로 바꾸고
-5. 1~9까지는 예를들어 10:15:1로 호출되니 padStart를 통해 두자리수일때 앞에 0이 오게 함
+1. getClock이란 함수를 만들어, 그 안에 date 객체를 생성하고,
+2. date를 호출하는 당시의 현재 시간을 알려주도록 한다
+3. getHours, getMinutes, getSeconds를 통해 시,분,초를 얻어 오면서, 
+4. number타입으로 얻어온 것을 string타입으로 바꾼다
+5. 1~9까지는 예를들어 <10:15:1>로 호출되니 padStart를 통해 두자리수일때 앞에 0이 오도록 한다 <10:15:01>
 
 ```js
 const clock = document.querySelector("h2#clock");
@@ -200,6 +139,7 @@ ____________
 - Math.random() : 0 ~ 1사이의 랜덤한 숫자
 - Math.round() : 입력값을 반올림한 수와 가장 가까운 정수 값을 반환
 - Math.ceil() : 주어진 숫자보다 크거나 같은 숫자 중 가장 작은 숫자를 integer로 반환
+
 //예로 들어
 Math.ceil(1.0) -> 1을 반환
 Math.ceil(1.01) -> 2
@@ -219,24 +159,25 @@ const todaysQuote = quotes[Math.floor(Math.random() * quotes.length)];
 
 - ***HTML 요소 추가***
 - **Document.createElement()**
-<br>JS에서 tagName의 HTML요소를 만들어 반환
+<br/>JS에서 tagName의 HTML요소를 만들어 반환
 ```
 .createElement('h1')은 HTML에 <h1></h1>을 생성
 ```
 
 - **.appendChild()**
-<br>선택한 요소 안에 자식요소를 추가
+<br/>선택한 요소 안에 자식요소를 추가
 
 ```js
 const chosenImage = images[Math.floor(Math.random() * images.length)];
-//img를 랜덤으로 보여줌
+//img를 랜덤으로 보여준다
 
-const bgImage = document.createElement("img"); //img라는 코드를 생성
+const bgImage = document.createElement("img"); //img라는 태그를 생성
 
-bgImage.src = `img/${chosenImage}`; //이미지를 선택하고 src로 img폴더 뒤에 추가
+bgImage.src = `img/${chosenImage}`; 
 //<img src="img/01.jpg">랑 같음
 
-document.body.appendChild(bgImage); //bgImage를 body 내부에 추가
+document.body.appendChild(bgImage); 
+//bgImage를 body 내부에 추가
 //append는 가장 뒤에 오고, 반대로 prepend는 가장 위에 오게 함
 ```
 
@@ -372,10 +313,10 @@ ____________
 - ***Web API***
 
   - **navigator**
-  <br>브라우저에 대한 버전, 정보, 종류 등 관련된 정보를 제공
+  <br>브라우저에 대한 버전, 정보, 종류 등 관련된 정보를 제공한다
 
   - **geolocation.getCurrentPosition**
-  <br>현재 위치를 가져옴
+  <br>현재 위치를 가져온다
 
   ```js
   navigator.geolocation.getCurrentPosition() //위치 좌표를 알려줌
@@ -388,3 +329,28 @@ ____________
   .then((response) => console.log("response:", response))
   .catch((error) => console.log("error:", error));
   ```
+
+<br/>
+1. 
+
+```js
+function onGeoOK(position) {
+  const lat = position.coords.latitude;
+  const lon = position.coords.longitude;
+  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      const city = document.querySelector(".city");
+      const weather = document.querySelector(".weather");
+      city.innerText = data.name;
+      weather.innerText = `${data.weather[0].main}`;
+    });
+}
+function onGeoError() {
+  alert("Can't find you. No weather for you.😓")
+}
+
+navigator.geolocation.getCurrentPosition(onGeoOK, onGeoError);
+
+```
