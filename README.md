@@ -3,8 +3,10 @@
 ## *미리보기*
 __________
 ![Screenshot](https://user-images.githubusercontent.com/85764721/127614357-87a91ed2-63a6-4f9c-99bb-9539b1ce2d85.png)
-<br/>현재 사용하는 시간이 나타납니다
-<br/>이름, todo리스트를 작성할 수 있습니다
+[*momentum*](https://zhemdbs.github.io/momentum01/)
+<br/>중앙에는 현재 사용하는 시간을 나타내고, 이름, todo리스트를 작성할 수 있습니다
+<br/>좌측 하단에 명언을 위치하고, 새로고침때마다 랜덤으로 노출시킵니다
+
 <br/>
 
 ## *사용스택*
@@ -187,60 +189,25 @@ ____________
 
 # # To do list
 
-- *list 만들기*
+<br/>handleToDoSubmit함수를 만들고, input value를 비우기 전에 그 값을 저장하도록 newTodo를 만들고 value를 작성하고 실행되면 toDoInput.value가 비워지도록 함. 저장된 입력값을 paintToDo에 넣어서 호출시킨다
+<br/>(단, toDoInput.value가 지워진다 해서 newTodo가 지워지는것이 아니라, input의 value를 새로운 변수 newTodo에 복사하는 것)
+<br/>paintToDo에 호출된 입력값으로 li안에 있는 span에 넣어주어 li를 생성시킨다
+
 ```js
 const toDoForm = document.querySelector("#todo-form");
 const toDoInput = document.querySelector("#todo-form input");
 const toDoList = document.querySelector("#todo-list");
 
+//li생성
 function paintToDo(newTodo) {
   const li = document.createElement("li"); //li를 만들고
-  const span = document.createElement("span"); //span을 만들고
-  span.innerText = newTodo; //span의 text 변경
-  const button = document.createElement("button"); //button을 만들고
-  button.innerText = "❌" //button의 text 변경
-  li.appendChild(span); //li에 span을 추가
-  li.appendChild(button); //li에 button을 추가
-  toDoList.appendChild(li); //toDoList에 li를 추가
-}
-
-function handleToDoSubmit(event) {
-  event.preventDefault();
-  const newTodo = toDoInput.value;//input value를 비우기 전에 그 값 저장
-  toDoInput.value = ""; //value를 작성하고 enter을 하면 입력한 것이 비워짐
-  paintToDo(newTodo); //그 입력값을 paintToDo에 넣어서 호출
-
-  //toDoInput.value가 지워진다 해서 newTodo가 지워지는것이 아님
-  //input의 value를 새로운 변수 newTodo에 복사하는 것
-  //toDoInput.value에 무엇을 하던 newTodo에는 아무런 영향이 없음
-}
-
-toDoForm.addEventListener("submit", handleToDoSubmit);
-```
-
-- **parentElement**
-
-```js
-//list 삭제버튼
-function deleteToDo(event) {
-  const li = event.target.parentElement; 
-  //button을 클릭할 때, event를 얻고 target을 줌. 
-  //target은 button! target의 부모가 li
-  li.remove(); //그 li를 삭제
-}
-```
-
-- *코드 내용*
-1. 사용자가 form을 submit하면
-2. toDoInput.value을 비우고
-3. 그 newTodo를 toDos 배열에 push하고,
-4. newTodo를 화면에 그려준 뒤에 toDos배열을 localStorage에 넣어주면서 저장
-
-```js
-//list 저장
-const toDos = [];
-function saveToDos() {
-  localStorage.setItem("todos", toDos);
+  const span = document.createElement("span"); 
+  span.innerText = newTodo;
+  const button = document.createElement("button");
+  button.innerText = "❌"
+  li.appendChild(span); 
+  li.appendChild(button);
+  toDoList.appendChild(li);
 }
 
 //input
@@ -248,60 +215,65 @@ function handleToDoSubmit(event) {
   event.preventDefault();
   const newTodo = toDoInput.value;
   toDoInput.value = "";
-  toDos.push(newTodo);
   paintToDo(newTodo);
+
+  //toDoInput.value에 무엇을 하던 newTodo에는 아무런 영향이 없음
 }
 
 toDoForm.addEventListener("submit", handleToDoSubmit);
 ```
 
-- **JSON.stringify()**
-<br/>js값이나 객체를 JSON문자열로 변환
+
+- **parentElement**
+<br/>삭제 button을 클릭했을 때, event를 얻고 target을 주는데, target은 어떤`button`인지 알려주고,
+<br/>target의 부모(parentElement)는 li로 button을 누르면 li가 삭제되도록 하였다
 
 ```js
-//예를 들어
-const player = {name:"yoon"}
-//string으로 바꾸고 싶다면
+//li 삭제
+function deleteToDo(event) {
+  const li = event.target.parentElement; 
+  li.remove();
+}
+```
 
-JSON.stringify(player); //"{\"name\":\"yoon\"}"
+- **JSON.stringify()**
+<br/>사용자가 form을 submit하고 그 입력값이 toDos의 배열에 push하며, newTodo를 화면에 그려준 뒤 saveToDos함수를 실행 그 함수는 toDos배열을 localStorage에 저장되도록 한다 그 저장된 값이 텍스트로 되있기 때문에 배열로 만들어 주기 위해 JSON.stringify을 사용해, string으로 바꾸어 주도록 한다
+
+```js
+let toDos = [];
+
+function saveToDos() {
+  localStorage.setItem(TODOS_KEY, JSON.stringify(toDos));
+}
 ```
 
 - **JSON.parse**
-<br/>JSON 문자열의 구문을 분석하고, 그 결과에서 js값이나 객체를 생성
-<br/>즉, stringify가 단순한 string으로 바꾼것을 js가 이해할 수 있는 array로 만듬
-
-```
-JSON.stringify([1, 2, 3, 4]) //"[1,2,3,4]"
-JSON.parse("[1,2,3,4]") //(4) [1, 2, 3, 4]
-
-"[a,b,c,d]" (string) => [a, b, c, d] (array);
+<br/>stringify가 단순한 string으로 바꾼것을 js가 이해할 수 있는 array로 만들어 주고, 그 배열의 각 item에 대해선 paintToDo를 호출하는데,
+localStorage에 toDo들이 있으면, toDos에 parsedToDos를 넣어 전에 있던 toDo를 복원시킨다
+```js
+if(savedToDos !== null){
+  const parsedToDos = JSON.parse(savedToDos);
+  toDos = parsedToDos;
+  parsedToDos.forEach(paintToDo);
+}
 ```
 
 - **Date.now()**
 <br/>UTC 기준으로 1970년 1월 1일 0시 0분 0초부터 현재까지 경과된 밀리 초를 반환
-
-
 - **filter**
 <br/>주어진 함수의 테스트를 통과하는 모든 요소를 모아 새로운 배열로 반환
-<br/>선택옵션
+<br/>
+<br/>
+<br/>어떤todo text를 DB에서 지워야 하는지 알기 위해 Date.now를 통해 얻은 숫자로 랜덤id를 만들어 주고, filter를 통해서 클릭했던 li의 id를 갖고 있는 toDo를 지운다(toDo의 id가 li의 id와 다른것을 남긴다)
 
 ```js
-const arr = [1234, 5454, 233, 122, 45, 6775, 334]
-
-function appleFunction(potato) {return potato <= 1000}
-
-arr.filter(appleFunction);
-//(4) [233, 122, 45, 334]
-```
-```js
-const arr = [1, 2, 3, 4]
-
-arr.filter(item => item > 2) //(2) [3, 4]
-
-const newArr = arr.filter(item => item > 2)
-
-arr //(4) [1, 2, 3, 4]
-newArr //(2) [3, 4]
+//li삭제
+function deleteToDo(event) {
+  const li = event.target.parentElement;
+  li.remove();
+  toDos = toDos.filter((toDo) => toDo.id !== parseInt(li.id));
+  saveToDos();
+}
 ```
 
 <br/>
@@ -316,35 +288,41 @@ ____________
   <br>브라우저에 대한 버전, 정보, 종류 등 관련된 정보를 제공한다
 
   - **geolocation.getCurrentPosition**
-  <br>현재 위치를 가져온다
-
+  <br/>위치를 받는데 성공한다면 onGeoOk함수가 실행하여 user의 현재 위치를 얻어오고, 
+  <br/>만약 문제가 발생한다면 onGeoError함수가 실행되도록 한다
   ```js
-  navigator.geolocation.getCurrentPosition() //위치 좌표를 알려줌
-  //getCurrentPosition(success function, error function)
+  function onGeoOk() {}
+  function onGeoError() {}
+  navigator.geolocation.getCurrentPosition(onGeoOk, onGeoError);
   ```
 
   - **fetch**
+  <br/>***~~fetch에 대해 좀더 공부할 필요가 있음~~***
+  <br/>*fetch는 `promise`인데, `promise`는 당장 뭔가 일어나지 않고, 시간이 조금 더 걸린 뒤에 일어나는 것으로 서버 응답을 기다린다*
+  <br/>*그래서 `then`을 사용*
   ```js
   fetch(url, options)
   .then((response) => console.log("response:", response))
   .catch((error) => console.log("error:", error));
   ```
 
-<br/>
-1. 
+<br/>1. 성공한 onGeoOk함수는 user의 현재 위치(경도, 위도)를 얻어온다.
+<br/>2. API를 통해 현재 날씨를 얻어온다
+<br/>3. url을 fetch하고 response을 받고, response의 json을 얻고,
+<br/>4. 추출된 내용의 data를 얻는다.
 
 ```js
 function onGeoOK(position) {
   const lat = position.coords.latitude;
   const lon = position.coords.longitude;
-  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`
+  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
   fetch(url)
     .then(response => response.json())
     .then(data => {
       const city = document.querySelector(".city");
       const weather = document.querySelector(".weather");
-      city.innerText = data.name;
-      weather.innerText = `${data.weather[0].main}`;
+      city.innerText = data.name; //사용자의 현재 위치
+      weather.innerText = `${data.weather[0].main} / ${data.main.temp}`; //사용자의 현재 위치의 날씨와, 온도
     });
 }
 function onGeoError() {
