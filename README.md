@@ -201,7 +201,7 @@ const toDoList = document.querySelector("#todo-list");
 
 //li생성
 function paintToDo(newTodo) {
-  const li = document.createElement("li"); //li를 만들고
+  const li = document.createElement("li");
   const span = document.createElement("span"); 
   span.innerText = newTodo;
   const button = document.createElement("button");
