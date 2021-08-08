@@ -1,11 +1,12 @@
-# [momentum01](https://zhemdbs.github.io/momentum01/index.html)
+# [momentum](https://zhemdbs.github.io/momentum01/index.html)
 
 ## *미리보기*
 __________
-![Screenshot](https://user-images.githubusercontent.com/85764721/127614357-87a91ed2-63a6-4f9c-99bb-9539b1ce2d85.png)
+![Screenshot](https://user-images.githubusercontent.com/85764721/127743772-9471d98a-c766-4569-aa18-67f4b815b332.png)
 [*momentum*](https://zhemdbs.github.io/momentum01/index.html)
+<br/>우측 상단은 사용자의 현재위치, 날씨, 온도를 노출시키며,
 <br/>중앙에는 현재 사용하는 시간을 나타내고, 이름, todo리스트를 작성할 수 있습니다
-<br/>좌측 하단에 명언을 위치하고, 새로고침때마다 랜덤으로 노출시킵니다
+<br/>좌측 하단에 명언은 새로고침때마다 랜덤으로 노출시킵니다
 
 <br/>
 
@@ -200,7 +201,7 @@ const toDoList = document.querySelector("#todo-list");
 
 //li생성
 function paintToDo(newTodo) {
-  const li = document.createElement("li"); //li를 만들고
+  const li = document.createElement("li");
   const span = document.createElement("span"); 
   span.innerText = newTodo;
   const button = document.createElement("button");
