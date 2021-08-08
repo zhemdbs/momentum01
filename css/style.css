@@ -73,5 +73,5 @@ input[type="text" i] {padding: 1px 2px;}
 #todo-list li button:hover {transform: rotate( 360deg );}
 
 /*quote*/
-#quote {font-weight: 500; font-size: 17px; position: absolute; bottom: 5px; text-align: center; }
+#quote {font-weight: 500; font-size: 17px; position: absolute; bottom: 5px;}
 #quote span {display: inline-block; margin: 0 5px;}
