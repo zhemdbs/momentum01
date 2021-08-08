@@ -33,12 +33,14 @@ body {height: 100vh; overflow: hidden; font-size: 17px;}
 
 main {position: relative; top: 50px; text-align: center;}
 
-/*js-weather*/
+/*weather*/
 #weather {font-weight: 500; display: flex; justify-content: flex-end; font-size: 17px; padding: 20px;}
 #weather .city {margin-right: 10px;}
 #weather .city::before {content: "____"; padding-right: 5px; font-weight: bold;}
 #weather .weather {text-align: center;} 
 
+/*inner*/
+.inner {display: flex; flex-direction: column; align-items: center;}
 
 /*clock*/
 .js-clock {margin-bottom: 30px; text-align: center;}
@@ -71,5 +73,5 @@ input[type="text" i] {padding: 1px 2px;}
 #todo-list li button:hover {transform: rotate( 360deg );}
 
 /*quote*/
-#quote {font-weight: 500; font-size: 17px; position: absolute; bottom: 5px; text-align: center;}
+#quote {font-weight: 500; font-size: 17px; position: absolute; bottom: 5px; text-align: center; }
 #quote span {display: inline-block; margin: 0 5px;}
