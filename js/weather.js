@@ -10,7 +10,14 @@ function onGeoOK(position) {
       const city = document.querySelector(".city");
       const weather = document.querySelector(".weather");
       city.innerText = data.name;
-      weather.innerText = `${data.weather[0].main} / ${data.main.temp}`;
+      temp = data.main.temp;
+      if(temp >= 28) {
+        weather.innerText = `${data.weather[0].main} / ${temp} 🔥`;
+      } else if(27 >= temp && temp >= 20) {
+        weather.innerText = `${data.weather[0].main} / ${temp} ☀`;
+      } else if(temp <= 19) {
+        weather.innerText = `${data.weather[0].main} / ${temp} ❄`;
+      }
     });
 }
 function onGeoError() {
