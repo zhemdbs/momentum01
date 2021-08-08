@@ -8,8 +8,8 @@ const USERNAME_KEY = "username";
 
 
 //submit 누르면 해당 값을 출력하고 저장
-function onLoginSubmit(event) {
-  event.preventDefault();
+function onLoginSubmit(ev) {
+  ev.preventDefault();
   loginForm.classList.add(HIDDEN_CLASSNAME);
   const username = loginInput.value;
   localStorage.setItem(USERNAME_KEY, username);
@@ -25,10 +25,10 @@ function toDisplay(element, boolean) {
   }
 }
 
-function editName(event) {
-  event.preventDefault();
+function editName(ev) {
+  ev.preventDefault();
 
-  // Remove the current user from local storage
+  // localstorage로부터 현재 유저 삭제
   localStorage.removeItem(USERNAME_KEY);
 
   // Reload the loadname function
