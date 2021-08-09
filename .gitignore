@@ -1,6 +1,5 @@
 api.js
 
-*.DS_Store
 *.csv
 *.docx
 *.pdf

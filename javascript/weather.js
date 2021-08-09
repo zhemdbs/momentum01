@@ -1,4 +1,4 @@
-var API_KEY = "javascript/api.js";
+API_KEY = SECRET_API_KEY;
 
 function onGeoOK(position) {
   const lat = position.coords.latitude;
