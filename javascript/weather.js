@@ -24,4 +24,4 @@ function onGeoError() {
 
 navigator.geolocation.getCurrentPosition(onGeoOK, onGeoError);
 
-
+addJavascript('javascript/weather.js');
