@@ -1,9 +1,9 @@
-# [momentum](https://zhemdbs.github.io/momentum/)
+# [momentum](https://zhemdbs.github.io/momentum01/)
 
 ## *미리보기*
 __________
 ![Screenshot](https://user-images.githubusercontent.com/85764721/128624763-1f21ff35-7865-4dd7-9769-b3165500ddd0.png)
-[*momentum*](https://zhemdbs.github.io/momentum/)
+[*momentum*](https://zhemdbs.github.io/momentum01/)
 * 우측 상단은 사용자의 현재위치, 날씨, 온도를 노출시키며,
 * 온도에 따라 온도 옆에 이모지가 해당 날씨를 간접적으로 노출시킵니다
 * 중앙에는 현재 사용하는 시간을 나타내고, 이름, todo리스트를 작성할 수 있습니다
