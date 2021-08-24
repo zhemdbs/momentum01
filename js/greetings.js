@@ -58,4 +58,8 @@ function loadName() {
   }
 }
 
-loadName();
+function init() {
+  loadName();
+}
+
+init();
