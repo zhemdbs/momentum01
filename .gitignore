@@ -1,5 +1,5 @@
 #API KEY
-api.js
+.env
 
 *.csv
 *.docx
